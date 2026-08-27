@@ -1,0 +1,21 @@
+name: VCT Intelligence Desk
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Telegram Alert
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: |
+            🚀 VCT Intelligence Desk is LIVE.
+
+            This is our first automated alert.
